@@ -1,3 +1,5 @@
+require '../models/task.rb'
+
 class TaskManagerApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 
@@ -14,7 +16,9 @@ class TaskManagerApp < Sinatra::Base
     erb :new
   end
 
-  post '/tasks' do 
-    "<p>Params: #{params}</p> <p>Task Params: #{params[:task]}</p>"
+  post '/tasks' do
+    task = Task.new(params[:task])
+    task.save
+    redirect '/tasks'
   end
 end
