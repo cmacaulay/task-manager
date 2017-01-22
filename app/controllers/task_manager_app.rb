@@ -1,3 +1,5 @@
+require '../models/task.rb'
+
 class TaskManagerApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
 
